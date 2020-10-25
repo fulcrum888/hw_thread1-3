@@ -15,9 +15,9 @@ public class ArraySumCalculator extends RecursiveTask<Integer> {
         final int middle = (end - start) / 2;
         ArraySumCalculator task1 = new ArraySumCalculator(start, middle, array);
         ArraySumCalculator task2 = new ArraySumCalculator(middle, end, array);
-        //invokeAll(task1, task2);
-        task1.fork();
-        task2.fork();
+        invokeAll(task1, task2);
+        //task1.fork();
+        //task2.fork();
         return task1.join() + task2.join();
     }
 
